@@ -36,7 +36,13 @@
                         </StackPanel>
 
                         <!--    Setting     -->
-                        <Button Grid.Column="2" Foreground="{StaticResource ForegroundDarkBrush}" Style="{StaticResource IconButton}"  Content="{StaticResource FontAwesomeCogIcon}"/>
+                        <Button Grid.Column="2" 
+                                Foreground="{StaticResource ForegroundDarkBrush}" 
+                                Style="{StaticResource IconButton}"  
+                                Content="{StaticResource FontAwesomeCogIcon}"
+                                Command="{Binding SettingsViewModel.OpenCommand, 
+                                                    Source={x:Static local:ViewModelLocator.Instance}}"
+                                />
 
                     </Grid>
 

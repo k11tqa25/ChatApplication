@@ -4,26 +4,83 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Fasetto.Word"
-             mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
-    <Grid Background="{StaticResource ForegroundLightBrush}">
-        <Grid.RowDefinitions>
-            <!--    Setting Titles      -->
-            <RowDefinition Height="Auto"/>
+             mc:Ignorable="d" >
+    <Border Padding="15" Background="{StaticResource ForegroundLightBrush}">        
+        <Grid >
+            <Grid.RowDefinitions>
+                <!--    Setting Titles      -->
+                <RowDefinition Height="Auto"/>
             
-            <!--    Main Content     -->
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
+                <!--    Main Content     -->
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
 
-        <!--    Setting Titles      -->
-        <Grid Height="50">
-            <Button Style="{StaticResource IconButton}"
-                    Content="{StaticResource FontAwesomeChatIcon}"
-                    FontFamily="{StaticResource FontAwesome}"
-                    Foreground="{StaticResource ForegroundDarkBrush}"/>
-        </Grid>
+            <!--    Setting Titles      -->
+            <Grid Height="40" Margin="0 0 0 20">
+            
+                <!--    Back Button    -->
+                <Button Style="{StaticResource IconGrowButton}"
+                        Content="{StaticResource FontAwesomeArrorLeftIcon}"
+                        FontFamily="{StaticResource FontAwesome}"
+                        Foreground="{StaticResource ForegroundDarkBrush}"
+                        Height="40"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        Command="{Binding CloseCommand}"/>
+            
+                <!--   Settings Header   -->
+                <TextBlock FontSize="{StaticResource FontSizeLarge}"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center">
+                    <!--    Cog Icon    -->              
+                    <Run  FontFamily="{StaticResource FontAwesome}"
+                          Text="{StaticResource FontAwesomeCogIcon}"
+                          Foreground="{StaticResource WordOrangeBrush}" />
+                    <!--    Settings Text    -->              
+                    <Run Text= "Settings"
+                         FontFamily="{StaticResource LatoRegular}"/>
+                </TextBlock>
+            </Grid>
         
         
-        <!--    Main Content     -->
+            <!--    Main Content     -->
+            <Grid Grid.Row="1"
+                  Width="600"
+                  VerticalAlignment="Top">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="300"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                
+                <!--    Profile Picture     -->
+                <Grid  Margin="0 0 30 0"
+                        Height= "{Binding ActualWidth, RelativeSource={RelativeSource Self}}">
+
+                    <!--    Mask    -->
+                    <Border CornerRadius="8"
+                            x:Name="Mask"
+                            Background="White"/>
+                    
+                    <!--    Image     -->
+                    <Image Source="/Images/Samples/rusty.jpg" Stretch="UniformToFill">
+                        <Image.OpacityMask>
+                            <VisualBrush  Visual="{Binding ElementName=Mask}"/>
+                        </Image.OpacityMask>
+                    </Image>
+                    
+                </Grid>
+                
+                <!--    Profile Details     -->
+                <StackPanel Grid.Column="1">
+                    <local:TextEntryControl/>
+                    <local:TextEntryControl/>
+                    <local:TextEntryControl/>
+                    <local:TextEntryControl/>
+                </StackPanel>
+
+            </Grid>
+            
+            
     </Grid>
+    </Border>
 </UserControl>

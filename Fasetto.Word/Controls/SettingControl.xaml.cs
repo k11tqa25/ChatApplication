@@ -1,4 +1,5 @@
-﻿using System.Windows.Controls;
+﻿using Fasetto.Word.Core;
+using System.Windows.Controls;
 
 namespace Fasetto.Word
 {
@@ -10,6 +11,9 @@ namespace Fasetto.Word
         public SettingControl()
         {
             InitializeComponent();
+
+            // Set data context to settings view model
+            DataContext = IoC.Settings;
         }
     }
 }

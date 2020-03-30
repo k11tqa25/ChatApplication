@@ -3,23 +3,24 @@
     /// <summary>
     /// The design-time data for a <see cref="TextEntryViewModel"/>
     /// </summary>
-    public class MessageBoxDialogDesignModel: MessageBoxDialogViewModel
+    public class TextEntryDesignModel: TextEntryViewModel
     {
         #region Singleton
 
         /// <summary>
         /// A single instance of a design model
         /// </summary>
-        public static MessageBoxDialogDesignModel Instance => new MessageBoxDialogDesignModel();
+        public static TextEntryDesignModel Instance => new TextEntryDesignModel();
 
         #endregion
 
         #region Constructor
 
-        public MessageBoxDialogDesignModel()
+        public TextEntryDesignModel()
         {
-            Message = "Design time messages are fun :)";
-            OkText = "OK";
+            Label = "Name";
+            OriginalText = "Kevin Tsai";
+            EditedText = "Text :)";
         }
         
         #endregion

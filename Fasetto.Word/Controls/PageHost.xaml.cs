@@ -46,7 +46,7 @@ namespace Fasetto.Word
             // as the dependency preoperty does not fire
             if (DesignerProperties.GetIsInDesignMode(this))
             {
-                this.NewPage.Content = (BasePage)new ApplicationPageValueConverter().Convert(IoC.Get<ApplicationViewModel>().CurrentPage);
+                this.NewPage.Content = (BasePage)new ApplicationPageValueConverter().Convert(IoC.Application.CurrentPage);
             }
         }
 
@@ -70,16 +70,17 @@ namespace Fasetto.Word
 
             // Remove current page from new page frame
             newPageFrame.Content = null;
-
+        
             //  Move the previous page into the old page frame
             oldPageFrame.Content = oldPageContent;
+
 
             // Animate out previous page when the loaded event fires
             // right after this call due to moving frames
             if (oldPageContent is BasePage oldPage)
             {
                 // Tell old page to animate out
-               oldPage.ShouldAnimateOut = true;
+                oldPage.ShouldAnimateOut = true;
 
                 // Once it is done, remove it.
                 Task.Delay((int)(oldPage.SlideSeconds * 1000)).ContinueWith((t) => 
